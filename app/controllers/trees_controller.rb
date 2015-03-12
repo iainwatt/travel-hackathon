@@ -9,6 +9,10 @@ class TreesController < ApplicationController
       format.json { render json: @trees }
     end
 
+<<<<<<< HEAD
+=======
+    # @tree = Trees.all
+>>>>>>> bd3ac6b77841fdad2f6c676bc8b40927afdac0e1
   end
 
   def new

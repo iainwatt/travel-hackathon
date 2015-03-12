@@ -62,6 +62,11 @@
         = f.text_field :girth, :class => 'tree-girth'
     %p
 
+      .field
+        = f.label :tree_image
+        %br/
+        = f.file_field :tree_image
+        
       -# .field
       -#   = f.label :remote_tree_image_url
       -#   %br
