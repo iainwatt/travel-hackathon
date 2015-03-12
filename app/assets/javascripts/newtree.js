@@ -28,7 +28,7 @@ function createTree(){
 
 $(document).ready(function(){
 
-  $('.tree-form').on('submit', function(e){
+  $('#new-tree').on('submit', function(e){
     e.preventDefault();
     createTree();
   });
