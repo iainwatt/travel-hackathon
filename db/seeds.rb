@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Tree.destroy_all
 
 Tree.create(
   name: 'General Sherman', 
@@ -16,7 +15,8 @@ Tree.create(
   tree_image: open("http://upload.wikimedia.org/wikipedia/commons/thumb/4/46/General_Sherman_tree_looking_up.jpg/170px-General_Sherman_tree_looking_up.jpg"),
   description: 'named after William Tecumseh Sherman', 
   height: 274.9, 
-  girth: 102.6)
+  girth: 102.6,
+  address: 'Three Rivers California USA')
 
 puts "seed success"
 
