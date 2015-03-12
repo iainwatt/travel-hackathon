@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150312154641) do
+ActiveRecord::Schema.define(version: 20150312161737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150312154641) do
     t.string   "species"
     t.string   "location"
     t.string   "latitude"
-    t.string   "logitude"
+    t.string   "longitude"
     t.string   "tree_image"
     t.string   "description"
     t.integer  "height"
