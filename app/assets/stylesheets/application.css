@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+
+#map_canvas {
+  height:500px;
+  width:1000px;
+}
+
+.tree-index {
+  font-family: "Montserrat", sans-serif;
+  font-weight: lighter;
+}
+
+#search {
+  margin-top: 30px;
+  height: 30px;
+  width: 50px;
+}
