@@ -30,3 +30,8 @@
   height: 30px;
   min-width: 100px;
 }
+
+#info-window-content {
+  background-color: #D8F0CF;
+  font-family: "Montserrat", sans-serif;
+}
