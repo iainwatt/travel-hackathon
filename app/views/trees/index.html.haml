@@ -1,28 +1,13 @@
 
-
-
-%h1 this is our main view pagerout
-
-%image_tag tree.tree_image.url %>
-
 %h1.tree-index TreeSpotter
 
+%p= link_to "Add Tree", new_tree_path
 
-%input#search{type: "text"}
-  #map_canvas
+-  trees = @trees.uniq.pluck(:species)
+-  trees.each do |x| 
+  %p= x
+
+#map_canvas
   
-%address
-  Fulham Palace
-%br
-  London
-%br
-  SW6 6EA
-
-%address
-  115 Hemingford Road
-%br
-  London
-%br
-  N1 1Bz
 
 %button Add a Tree

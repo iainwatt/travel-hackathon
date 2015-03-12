@@ -18,7 +18,7 @@ function initialize() {
   
 }
 
-  function addAjaxMarker(map) {
+function addAjaxMarker(map) {
     $.ajax({
       url: '/trees',
       method: 'GET',
@@ -40,7 +40,7 @@ function initialize() {
         console.log(marker)
 
 
-        var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees' + value.id + '"><h5>' + value.name + '</h5></a>' + '<p>' + value.description + '</p>' + '</div>';
+        var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees' + value.id + '"><h5>' + value.name + '</h5></a>' + '<h5>' + value.species + '</h5><p>' + value.description + '</p>' + '</div>';
 
         // attaching info window content
         var infowindow = new google.maps.InfoWindow({
@@ -56,6 +56,15 @@ function initialize() {
     })
 }
 
+// function showOneTree(map) {
+// $.ajax({
+//       url: '/trees/selected_trees',
+//       method: 'POST',
+//       dataType: 'json',
+//       data: {tree: {species: $('.serch_box').val}}
+//       }).done(function(response){
+//       console.log(response)
+//       }) 
 
 
   
