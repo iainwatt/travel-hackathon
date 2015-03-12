@@ -20,4 +20,15 @@ Tree.create(
 
 puts "seed success"
 
+Tree.create(
+  name: 'Old Fathful', 
+  species: 'Yew', 
+  location: 'Top Secret', 
+  latitude: '11° 34′ 51″ N', 
+  longitude: '115° 12′ 3″ W', 
+  tree_image: open("http://fc03.deviantart.net/fs71/i/2011/137/c/7/amazing_tree_by_zlata_petal-d3glqk5.jpg"),
+  description: 'Said to have eaten 3 children', 
+  height: 264.9, 
+  girth: 104.6)
+
 # remote_[attribut name]_url
