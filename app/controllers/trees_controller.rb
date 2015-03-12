@@ -8,11 +8,18 @@ class TreesController < ApplicationController
       format.html
       format.json { render json: @trees }
     end
+  end
 
-<<<<<<< HEAD
-=======
-    # @tree = Trees.all
->>>>>>> bd3ac6b77841fdad2f6c676bc8b40927afdac0e1
+
+# create custom post root in roots rb
+# send ajax request to that root 
+  def selected_trees
+    @tree = Tree.where(species: params[:tree])
+    respond_to do |format|
+      format.html
+      format.json { render json: @tree }
+    end
+
   end
 
   def new
