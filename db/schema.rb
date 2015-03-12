@@ -16,6 +16,14 @@ ActiveRecord::Schema.define(version: 20150312154641) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "countries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "map"
+    t.string   "murders"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trees", force: :cascade do |t|
     t.string   "name"
     t.string   "species"
