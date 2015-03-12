@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  get 'countries/index'
+  
+  root 'trees#index'
 
-  get 'countries/show'
-
-  get 'countries/new'
+  resources :trees
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
