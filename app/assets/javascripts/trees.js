@@ -63,6 +63,13 @@ $(document).ready(function(){
       var bounds = map.getBounds();
       searchBox.setBounds(bounds);
     });
+
+    google.maps.event.addListener(markers, 'click', function() {
+    map.setZoom(8);
+    map.setCenter(marker.getPosition());
+    });
+
+
   }
 
 
