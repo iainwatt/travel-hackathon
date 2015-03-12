@@ -1,5 +1,4 @@
 function createTree(){
-  console.log("help!")
   $name = $('.tree-name').val();
   $species = $('.tree-species').val();
   $description = $('.tree-description').val();
@@ -21,24 +20,23 @@ function createTree(){
       girth:$girth, 
       image:$image
     }}
-  }).done(function() {
-    console.log("done!")
-  });
+  // }).done(function(response) {
+  //   $('<h1> The ' + tree.name + 'has been added to our collection.  Thank you').appendTo(#new-tree)
+  // });
+})
 }
 
 $(document).ready(function(){
 
-  $('#new_tree').on('submit', function(e){
+  $('.tree-form').on('submit', function(e){
     e.preventDefault();
     createTree();
   });
 
+  $('#add-tree').on('click', function(){
+    $('#tree-form').removeClass('hidden')
+  });
+
+
 }) 
 
-
-// .done(function(response){
-//     $('<h2> Your group ' + response.name + ' is created. <button class="delete" data-id='+ response.id +'>Delete</button></h2>').appendTo('h2.new-group')
-//     $('<p>' + response.description + '</p>' ).appendTo('h2.new-group')
-//     $('<a href="/groups/'  + response.id + '">check out the group</a>').appendTo('h2.new-group')
-
-//  
