@@ -31,12 +31,11 @@
   min-width: 100px;
 }
 
-<<<<<<< HEAD
+
 .hidden {
   display: none;
-=======
+
 #info-window-content {
   background-color: #D8F0CF;
   font-family: "Montserrat", sans-serif;
->>>>>>> bd3ac6b77841fdad2f6c676bc8b40927afdac0e1
 }
