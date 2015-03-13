@@ -27,7 +27,7 @@ class TreesController < ApplicationController
   end
 
   def create
-    binding.pry
+   
     @tree = Tree.create(tree_params)
     # respond_to do |format|
     #   format.html

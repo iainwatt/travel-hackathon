@@ -1,5 +1,4 @@
-$(document).ready(function(){  
-
+$(document).ready(function(){ 
 
 
 function initialize() {
@@ -33,10 +32,19 @@ function addAjaxMarker(map) {
         var position = new google.maps.LatLng(value.latitude, value.longitude);
         console.log(position)
 
+        // var image = { 
+        //   url: 'http://www.davey.com/media/1001/home-tree.png',
+        //   // url: "/assets/tree-marker.png",
+        //   size: new google.maps.Size(10, 10)
+        //   }
+
         var marker = new google.maps.Marker({
           position: position,
           map: map,
-          title: value.species
+          title: value.species,
+          icon: "/assets/tree.marker.mini.png"
+          // icon: 'http://www.davey.com/media/1001/home-tree.png'
+          // www.davey.com/media/1001/home-tree.png?width=960&height=520&quality=80&mode=crop'
         });
         console.log(marker)
 

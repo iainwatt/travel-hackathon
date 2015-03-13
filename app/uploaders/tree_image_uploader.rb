@@ -42,6 +42,11 @@ class TreeImageUploader < CarrierWave::Uploader::Base
     process :resize_to_fit => [500, 500]
   end
 
+  version :tiny do
+    process :resize_to_fit => [10, 10]
+  end
+  
+
   # Add a white liundefined method `merge' for :image:Symbolst of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_white_list
