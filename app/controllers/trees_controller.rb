@@ -27,7 +27,7 @@ class TreesController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     @tree = Tree.create(tree_params)
     # respond_to do |format|
     #   format.html
@@ -43,6 +43,6 @@ class TreesController < ApplicationController
 private
 
   def tree_params
-      params.require(:tree).permit(:name, :species, :description, :address, :height, :girth, :age, :remote_tree_image_url)
+      params.require(:tree).permit(:name, :species, :description, :address, :height, :girth, :age, :tree_image)
   end
 end

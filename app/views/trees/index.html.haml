@@ -1,7 +1,7 @@
 
 %h1.tree-index TreeSpotter
 
-%p= link_to "Add Tree", new_tree_path
+-# %p= link_to "Add Tree", new_tree_path
 
 -  trees = @trees.uniq.pluck(:species)
 -  trees.each do |x| 
@@ -50,8 +50,11 @@
 
       .field
         = f.label :tree_image
-        %br/
-        = f.file_field :tree_image
+        %br
+        = f.file_field :tree_image, :class => 'tree-image'
+
+
+        -# = f.file_field :tree_image, accept: 'image/png,image/gif,image/jpeg'
         
       -# .field
       -#   = f.label :remote_tree_image_url

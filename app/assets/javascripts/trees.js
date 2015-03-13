@@ -43,6 +43,7 @@ function addAjaxMarker(map) {
 
         var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees/' + value.id + '"><h5>' + value.name + '</h5></a>' + '<h5>' + value.species + '</h5><p>' + value.description + '</p>' + '<img src="' + value.tree_image.thumb.url + '">' + '</div>';
         
+        
         console.log('look again')
 
         // attaching info window content
