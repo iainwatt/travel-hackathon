@@ -59,7 +59,7 @@ function addAjaxMarker(map) {
 //       url: '/trees/selected_trees',
 //       method: 'POST',
 //       dataType: 'json',
-//       data: {tree: {species: $('.serch_box').val}}
+//       data: {tree: {species: $('.searchType').val}}
 //       }).done(function(response){
 //       console.log(response)
 //       }) 
@@ -80,9 +80,30 @@ function fillDropdown() {
       $.each(species, function(i, el){
       if($.inArray(el, uniquespecies) === -1) uniquespecies.push(el);
       console.log(uniquespecies)
-      });     
+      // $('#species-select').append('<option>' + uniquespecies + '</option>');
+      }); 
+        $.each(uniquespecies, function(index, value) {
+          $('#species-select').append('<option>' + value + '</option>'); 
+        })
       
+      $('#species-select').prepend('<option>' + '---select your species---' + '</option>') 
+        $('#species-select').on('change', search);
+          function search(e) {
+          searchType = $(':selected').val();
+          console.log(searchType);  
+          
+      $.ajax({
+        url: '/trees/selected_trees',
+        method: 'POST',
+        dataType: 'json',
+        data: {tree: {species: searchType}}
+        }).done(function(response){  
+        console.log(response)   
+        })
+      }
+
   })
+
 
 }
   
