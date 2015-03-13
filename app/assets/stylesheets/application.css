@@ -14,7 +14,6 @@
  *= require_self
  */
 
-
 #map_canvas {
   height:500px;
   width:1000px;
@@ -31,11 +30,40 @@
   min-width: 100px;
 }
 
+#welcome-content {
+  font-size: 20px;
+  border: 2px solid black;
+  width: 90%;
+  margin: 0 auto;
+  bottom-margin: 15px;
+  padding: 10px;
+}
 
 .hidden {
   display: none;
+}
 
 #info-window-content {
   background-color: #D8F0CF;
   font-family: "Montserrat", sans-serif;
 }
+
+#add-tree-button {
+  float: right;
+  height: 60px;
+  width: 150px;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #668dad;
+
+}
+
+#tree-form {
+  font-size: 15px;
+  background-color: #FBFAF7;
+
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+}
+

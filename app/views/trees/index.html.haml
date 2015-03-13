@@ -1,66 +1,73 @@
 
 %h1.tree-index TreeSpotter
 
-%p= link_to "Add Tree", new_tree_path
+%button#add-tree-button Recommend a Tree
+-# -# %p= link_to "Add Tree", new_tree_path
 
--  trees = @trees.uniq.pluck(:species)
--  trees.each do |x| 
-  %p= x
+-# -  trees = @trees.uniq.pluck(:species)
+-# -  trees.each do |x| 
+-#   %p= x
+
+%h3 A travel site for people who loves trees.
+
+-# #welcome-content  
 
 %select#species-select
 
 #map_canvas
 
+#form-container
+  
+
+  .hidden#tree-form
+    %h1 Tell us about your tree
+    = form_for @tree, :html => {:class => "tree-form"} do |f|
+      %p
+        .field
+          = f.label :name
+          %br
+          = f.text_field :name, :class => 'tree-name'  
+      %p
+        .field
+          = f.label :species
+          %br
+          = f.text_field :species, :class => 'tree-species'
+      %p
+        .field
+          = f.label :description
+          %br
+          = f.text_field :description, :class => 'tree-description'
+      %p
+        .field
+          = f.label :address
+          %br
+          = f.text_field :address, :class => 'tree-address'
+      %p
+        .field
+          = f.label :height
+          %br
+          = f.text_field :height, :class => 'tree-height'
+      %p
+        .field
+          = f.label :girth
+          %br
+          = f.text_field :girth, :class => 'tree-girth'
+      %p
+
+        .field
+          = f.label :tree_image
+          %br
+          = f.file_field :tree_image, :class => 'tree-image'
 
 
-%button#add-tree Add a Tree
+          -# = f.file_field :tree_image, accept: 'image/png,image/gif,image/jpeg'
+          
+        -# .field
+        -#   = f.label :remote_tree_image_url
+        -#   %br
+        -#   = f.text_field :remote_tree_image_url, :class = 'tree-image'
+      %p
+        .actions
+          = f.submit :class => "submit", id: "new-tree"
 
-.hidden#tree-form
-  %h1 Add A Tree Worth Seeing
-  = form_for @tree, :html => {:class => "tree-form"} do |f|
-    %p
-      .field
-        = f.label :name
-        %br
-        = f.text_field :name, :class => 'tree-name'  
-    %p
-      .field
-        = f.label :species
-        %br
-        = f.text_field :species, :class => 'tree-species'
-    %p
-      .field
-        = f.label :description
-        %br
-        = f.text_field :description, :class => 'tree-description'
-    %p
-      .field
-        = f.label :address
-        %br
-        = f.text_field :address, :class => 'tree-address'
-    %p
-      .field
-        = f.label :height
-        %br
-        = f.text_field :height, :class => 'tree-height'
-    %p
-      .field
-        = f.label :girth
-        %br
-        = f.text_field :girth, :class => 'tree-girth'
-    %p
-
-      .field
-        = f.label :tree_image
-        %br/
-        = f.file_field :tree_image
-        
-      -# .field
-      -#   = f.label :remote_tree_image_url
-      -#   %br
-      -#   = f.text_field :remote_tree_image_url, :class = 'tree-image'
-    %p
-      .actions
-        = f.submit :class => "submit", id: "new-tree"
-
-  %button#new-tree Add This Tree
+    -# %button#new-tree Add This Tree
