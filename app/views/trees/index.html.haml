@@ -3,11 +3,11 @@
 
 %p= link_to "Add Tree", new_tree_path
 
--  trees = @trees.uniq.pluck(:species)
--  trees.each do |x| 
-  %p= x
+
 
 %select#species-select
+%button#clear-map clear map
+
 
 #map_canvas
 
