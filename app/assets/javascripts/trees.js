@@ -70,14 +70,12 @@ function fillDropdown() {
     method: 'GET',
     dataType: 'json'
   }).done(function(response){
-    var uniqspecies = $.unique(response)
-    console.log(uniqspecies);
-  })
-        // $.each(response, function(index, value){
-        // uniqspecies.push(value.species)
-        // console.log(uniqspecies)
-        // })
+      $.each(response, function(index, value){
 
+      })
+      var uniqspecies = $.unique(response)
+      console.log(uniqspecies);
+  })
 
 }
   

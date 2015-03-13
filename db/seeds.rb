@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Tree.delete_all
+
 Tree.create(
   name: 'General Sherman', 
   species: 'sequoias', 
