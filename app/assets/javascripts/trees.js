@@ -24,10 +24,8 @@ function addAjaxMarker(map) {
       method: 'GET',
       dataType: 'json'
     }).done(function(response){
-      console.log(response)
       $.each(response, function(index, value){
-        console.log(value.species)
-        console.log(value.latitude)
+
 
         var position = new google.maps.LatLng(value.latitude, value.longitude);
         console.log(position)
@@ -37,7 +35,7 @@ function addAjaxMarker(map) {
           map: map,
           title: value.species
         });
-        console.log(marker)
+
 
 
         var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees' + value.id + '"><h5>' + value.name + '</h5></a>' + '<h5>' + value.species + '</h5><p>' + value.description + '</p>' + '</div>';
@@ -66,8 +64,24 @@ function addAjaxMarker(map) {
 //       console.log(response)
 //       }) 
 
+function fillDropdown() {
+  $.ajax({
+    url: '/trees',
+    method: 'GET',
+    dataType: 'json'
+  }).done(function(response){
+    var uniqspecies = $.unique(response)
+    console.log(uniqspecies);
+  })
+        // $.each(response, function(index, value){
+        // uniqspecies.push(value.species)
+        // console.log(uniqspecies)
+        // })
 
+
+}
   
+fillDropdown();
 google.maps.event.addDomListener(window, 'load', initialize);
 
 });
