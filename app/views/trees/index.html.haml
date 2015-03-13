@@ -4,6 +4,7 @@
 %button#add-tree-button Recommend a Tree
 -# -# %p= link_to "Add Tree", new_tree_path
 
+
 -# -  trees = @trees.uniq.pluck(:species)
 -# -  trees.each do |x| 
 -#   %p= x
@@ -12,7 +13,11 @@
 
 -# #welcome-content  
 
+
+
 %select#species-select
+%button#clear-map clear map
+
 
 #map_canvas
 

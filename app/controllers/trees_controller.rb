@@ -14,7 +14,8 @@ class TreesController < ApplicationController
 # create custom post root in roots rb
 # send ajax request to that root 
   def selected_trees
-    @tree = Tree.where(species: params[:tree])
+
+    @tree = Tree.where(species: params[:tree][:species])
     respond_to do |format|
       format.html
       format.json { render json: @tree }

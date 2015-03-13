@@ -1,4 +1,11 @@
-$(document).ready(function(){ 
+
+
+$(document).ready(function(){  
+
+  $('#species-select').on('change', search);
+
+
+
 
 
 function initialize() {
@@ -10,11 +17,11 @@ function initialize() {
       styles: [{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]
     };
 
-    var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+  window.map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
 
+  markersArray = [];
+  addAjaxMarker(map);
 
-    addAjaxMarker(map);
-  
 }
 
 function addAjaxMarker(map) {
@@ -25,9 +32,8 @@ function addAjaxMarker(map) {
     }).done(function(response){
       $.each(response, function(index, value){
 
-
         var position = new google.maps.LatLng(value.latitude, value.longitude);
-        console.log(position)
+        // console.log(position)
 
         // var image = { 
         //   url: 'http://www.davey.com/media/1001/home-tree.png',
@@ -37,6 +43,7 @@ function addAjaxMarker(map) {
 
         var marker = new google.maps.Marker({
           position: position,
+
           map: map,
           title: value.species,
           icon: "/assets/tree.marker.mini.png"
@@ -45,6 +52,12 @@ function addAjaxMarker(map) {
         });
 
 
+
+
+
+          map: window.map,
+          title: value.species
+        });
 
 
         var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees' + value.id + '"><h5>' + value.name + '</h5></a>' + '<h5>' + value.species + '</h5><p>' + value.description + '</p>' + '</div>';
@@ -65,36 +78,123 @@ function addAjaxMarker(map) {
         infowindow.open(map, marker);
         });
 
+      $( "#clear-map" ).click(function() {
+        console.log(markersArray)
+        console.log(marker)
+        markersArray.push(marker);
+        google.maps.event.addListener(marker, "click", function(){
+
+        });
+        window.map.clearOverlays();
+        // AddNewMarkers(marker)
+
+        })        
+
+
       })
     })
 }
 
-// function showOneTree(map) {
-// $.ajax({
-//       url: '/trees/selected_trees',
-//       method: 'POST',
-//       dataType: 'json',
-//       data: {tree: {species: $('.serch_box').val}}
-//       }).done(function(response){
-//       console.log(response)
-//       }) 
+function search(e) {
+  searchType = $(':selected').val();
+  // console.log(searchType);  
 
-function fillDropdown() {
+  $.ajax({
+    url: '/trees/selected_trees',
+    method: 'POST',
+    dataType: 'json',
+    data: {
+      tree: {
+        species: searchType
+      }
+    }
+  }).done(function(response) {
+    $.each(response, function(index, value) {
+      console.log(value.species)
+      var position = new google.maps.LatLng(value.latitude, value.longitude);
+      console.log(position)
+      // debugger;
+
+      var marker = new google.maps.Marker({
+        position: position,
+        // map: window.map,
+        title: value.species
+      });
+
+      var infoWindowContent = '<div id="info-window-content">' + '<a href="' + window.location.origin + '/trees' + value.id + '"><h5>' + value.name + '</h5></a>' + '<h5>' + value.species + '</h5><p>' + value.description + '</p>' + '</div>';
+
+        // attaching info window content
+        var infowindow = new google.maps.InfoWindow({
+          content: infoWindowContent
+        });
+
+        //click event to show content
+        google.maps.event.addListener(marker, 'click', function() {
+        infowindow.open(map, marker);
+        });
+
+      marker.setMap(window.map);
+
+      $( "#clear-map" ).click(function() {
+        console.log(markersArray)
+        console.log(marker)
+        markersArray.push(marker);
+        google.maps.event.addListener(marker, "click", function(){
+
+        });
+        window.map.clearOverlays();
+        // AddNewMarkers(marker)
+
+        })        
+
+      
+    })
+  })
+}
+
+
+function fillDropdown(map) {
   $.ajax({
     url: '/trees',
     method: 'GET',
     dataType: 'json'
   }).done(function(response){
-      $.each(response, function(index, value){
+    var species = []
+    $.each(response, function(index, value){
+      species.push(value.species);
+      // console.log(species)
+    })
 
-      })
-      var uniqspecies = $.unique(response)
-      console.log(uniqspecies);
+    var uniquespecies = [];
+    $.each(species, function(i, el){
+      if($.inArray(el, uniquespecies) === -1) uniquespecies.push(el);
+    // console.log(uniquespecies)
+    // $('#species-select').append('<option>' + uniquespecies + '</option>');
+    }); 
+    $.each(uniquespecies, function(index, value) {
+      $('#species-select').append('<option>' + value + '</option>'); 
+    })
+      
+    $('#species-select').prepend('<option>' + '---select your species---' + '</option>') 
+        
   })
+}
+
+function AddNewMarkers(marker) {
 
 }
-  
+
+
+
+
 fillDropdown();
 google.maps.event.addDomListener(window, 'load', initialize);
 
 });
+
+google.maps.Map.prototype.clearOverlays = function() {
+  for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+  }
+  markersArray.length = 0;
+}
