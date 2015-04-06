@@ -11,7 +11,7 @@ The idea behind this project was to create an app that allowed a user to search 
 **Contributions**
 At this time only the authors but if anyone wishes to take this very basic app and expand on its UX and functionality it would be to the benefit of trees and tree lovers worldwide.  
 
-**Built With / Stack**
+**Stack**
 
 - Rails 4.2.0
 - Ruby 2.1.4 
