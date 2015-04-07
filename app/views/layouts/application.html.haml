@@ -1,0 +1,11 @@
+
+%html
+  %head
+    %title treespotter
+    %link{href: "http://fonts.googleapis.com/css?family=Montserrat|Cardo", rel: "stylesheet", type: "text/css"}
+    %script{ type: "text/javascript", src: "http://maps.googleapis.com/maps/api/js?key=AIzaSyCQrgjsTVtY7_iUtYXulK-o-cZRhVaAsi8&libraries=places"}
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    = yield
