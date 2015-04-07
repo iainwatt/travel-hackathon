@@ -35,6 +35,7 @@ $(document).ready(function(){
 
   $('#add-tree').on('click', function(){
     $('#tree-form').removeClass('hidden')
+    $('#tree-form').addClass('unhidden')
   });
 
 

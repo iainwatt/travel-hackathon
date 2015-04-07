@@ -1,66 +1,133 @@
 
 %h1.tree-index TreeSpotter
 
-%p= link_to "Add Tree", new_tree_path
+%button#add-tree-button Recommend a Tree
+-# -# %p= link_to "Add Tree", new_tree_path
 
 
+-# -  trees = @trees.uniq.pluck(:species)
+-# -  trees.each do |x| 
+-#   %p= x
 
+%h3 A travel site for people who loves trees.
+
+-# #welcome-content  
+.big-wrapper
+  .full
+    %section#banner.topbanner
+      #boxes      
+        .small-box.mountains{:rel => "mountains"}
+          %div
+            %a.lakes-visible{:href => "http://en.wikipedia.org/wiki/Derwentwater", :target => "_blank"}
+              %span Derwentwater
+              %img{:src => "http://www.savorypixel.com/678799/lakes/derwentwater.jpg"}/
+            %a.forests-visible{:href => "http://en.wikipedia.org/wiki/Black_forest", :target => "_blank"}
+              %span Black Forest
+              %img{:src => "http://www.savorypixel.com/678799/forests/black-forest.jpg"}/
+            %a.beaches-visible{:href => "http://en.wikipedia.org/wiki/The_Maldives", :target => "_blank"}
+              %span The Maldives
+              %img{:src => "http://www.savorypixel.com/678799/beaches/maldives.jpg"}/
+            %a.mountains-visible.original
+              %span Oak
+        .small-box.lakes{:rel => "lakes"}
+          %div
+            %a.mountains-visible{:href => "http://en.wikipedia.org/wiki/Lhotse", :target => "_blank"}
+              %span Lhotse
+              %img{:src => "http://www.savorypixel.com/678799/mountains/lhotse.jpg"}/
+            %a.forests-visible{:href => "http://en.wikipedia.org/wiki/Sagano_Bamboo_Forest", :target => "_blank"}
+              %span Sagano Bamboo Forest
+              %img{:src => "http://www.savorypixel.com/678799/forests/sagano-bamboo-forest.jpg"}/
+            %a.beaches-visible{:href => "http://en.wikipedia.org/wiki/Lanikai_Beach", :target => "_blank"}
+              %span Lanikai Beach
+              %img{:src => "http://www.savorypixel.com/678799/beaches/lanikai-beach.jpg"}/
+            %a.lakes-visible.original
+              %span Sequoia
+        .small-box.forests{:rel => "forests"}
+          %div
+            %a.mountains-visible{:href => "http://en.wikipedia.org/wiki/Kanchenjunga", :target => "_blank"}
+              %span Kanchenjunga
+              %img{:src => "http://www.savorypixel.com/678799/mountains/kanchenjunga.jpg"}/
+            %a.lakes-visible{:href => "http://en.wikipedia.org/wiki/Lake_tahoe", :target => "_blank"}
+              %span Lake Tahoe
+              %img{:src => "http://www.savorypixel.com/678799/lakes/lake-tahoe.jpg"}/
+            %a.beaches-visible{:href => "http://en.wikipedia.org/wiki/Hampton_Beach", :target => "_blank"}
+              %span Hampton Beach
+              %img{:src => "http://www.savorypixel.com/678799/beaches/hampton-beach.jpg"}/
+            %a.forests-visible.original
+              %span Spruce
+        .small-box.beaches{:rel => "beaches"}
+          %div
+            %a.mountains-visible{:href => "http://en.wikipedia.org/wiki/Mount_everest", :target => "_blank"}
+              %span Mount Everest
+              %img{:src => "http://www.savorypixel.com/678799/mountains/everest.jpg"}/
+            %a.lakes-visible{:href => "http://en.wikipedia.org/wiki/Maligne_lake", :target => "_blank"}
+              %span Maligne Lake
+              %img{:src => "http://www.savorypixel.com/678799/lakes/maligne-lake.jpg"}/
+            %a.forests-visible{:href => "http://en.wikipedia.org/wiki/Sequoia_National_Forest", :target => "_blank"}
+              %span Sequoia National Forest
+              %img{:src => "http://www.savorypixel.com/678799/forests/sequoia-forest.jpg"}/
+            %a.beaches-visible.original
+              %span Yew
+  #map_canvas
+
+              
+          
 %select#species-select
 %button#clear-map clear map
+      
+
+#form-container
+  
+
+  .hidden#tree-form
+    %h1 Tell us about your tree
+    = form_for @tree, :html => {:class => "tree-form"} do |f|
+      %p
+        .field
+          = f.label :name
+          %br
+          = f.text_field :name, :class => 'tree-name'  
+      %p
+        .field
+          = f.label :species
+          %br
+          = f.text_field :species, :class => 'tree-species'
+      %p
+        .field
+          = f.label :description
+          %br
+          = f.text_field :description, :class => 'tree-description'
+      %p
+        .field
+          = f.label :address
+          %br
+          = f.text_field :address, :class => 'tree-address'
+      %p
+        .field
+          = f.label :height
+          %br
+          = f.text_field :height, :class => 'tree-height'
+      %p
+        .field
+          = f.label :girth
+          %br
+          = f.text_field :girth, :class => 'tree-girth'
+      %p
+
+        .field
+          = f.label :tree_image
+          %br
+          = f.file_field :tree_image, :class => 'tree-image'
 
 
-#map_canvas
+          -# = f.file_field :tree_image, accept: 'image/png,image/gif,image/jpeg'
+          
+        -# .field
+        -#   = f.label :remote_tree_image_url
+        -#   %br
+        -#   = f.text_field :remote_tree_image_url, :class = 'tree-image'
+      %p
+        .actions
+          = f.submit :class => "submit", id: "new-tree"
 
-
-
-%button#add-tree Add a Tree
-
-.hidden#tree-form
-  %h1 Add A Tree Worth Seeing
-  = form_for @tree, :html => {:class => "tree-form"} do |f|
-    %p
-      .field
-        = f.label :name
-        %br
-        = f.text_field :name, :class => 'tree-name'  
-    %p
-      .field
-        = f.label :species
-        %br
-        = f.text_field :species, :class => 'tree-species'
-    %p
-      .field
-        = f.label :description
-        %br
-        = f.text_field :description, :class => 'tree-description'
-    %p
-      .field
-        = f.label :address
-        %br
-        = f.text_field :address, :class => 'tree-address'
-    %p
-      .field
-        = f.label :height
-        %br
-        = f.text_field :height, :class => 'tree-height'
-    %p
-      .field
-        = f.label :girth
-        %br
-        = f.text_field :girth, :class => 'tree-girth'
-    %p
-
-      .field
-        = f.label :tree_image
-        %br/
-        = f.file_field :tree_image
-        
-      -# .field
-      -#   = f.label :remote_tree_image_url
-      -#   %br
-      -#   = f.text_field :remote_tree_image_url, :class = 'tree-image'
-    %p
-      .actions
-        = f.submit :class => "submit", id: "new-tree"
-
-  %button#new-tree Add This Tree
+    -# %button#new-tree Add This Tree
